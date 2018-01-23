@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'inquiry/main'
-
-  get 'inquiry/confirmation'
-
-  get 'inquiry/sended'
 
   # devise gemを利用
   devise_for :users, :controllers => {
@@ -49,5 +44,11 @@ Rails.application.routes.draw do
   get 'category' => 'category#list'
   get 'category/list'
   get 'category/subject'
+
+  # 問い合わせ
+  get 'inquiry' => 'inquiry#main'
+  get 'inquiry/main'
+  get 'inquiry/confirmation'
+  get 'inquiry/sended'
 
 end
