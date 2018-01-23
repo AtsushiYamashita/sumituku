@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'inquiry/main'
+
+  get 'inquiry/confirmation'
+
+  get 'inquiry/sended'
+
   # devise gemを利用
   devise_for :users, :controllers => {
     :omniauth_callbacks => "omniauth_callbacks",
