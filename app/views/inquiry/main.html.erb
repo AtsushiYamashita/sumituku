@@ -1,2 +1,52 @@
-<h1>Inquiry#main</h1>
-<p>Find me in app/views/inquiry/main.html.erb</p>
+
+ <h1 class='title'>  ご意見、お問い合わせ </h1>
+ <%= form_tag do %>
+ <div> <%= select_tag 'data[summary]',
+	options_for_select(@summary),
+	class:'summary_form' %></div>
+ <div>
+	 <p class="subject"><%= label_tag 'お名前 '%></p>
+	 <%= text_field_tag 'data[name]', '', class: 'name_form' %>
+</div>
+ <div>
+	<p class="subject"><%= label_tag 'メールアドレス '%></p>
+	<%= text_area_tag 'data[mail]', '', class: 'mail_adress_form' %>
+</div>
+ <div>
+	<p class="subject"><%= label_tag '詳細 '%></p>
+	<%= text_area_tag 'data[detail]','', class: 'detail_form' %>
+	</div>
+ <% end %>
+ <input type="button" value="確認する"
+  id="send" onclick="send_on_click()" >
+
+ <script>
+
+ 	if (String.prototype.format == undefined)
+ 	{
+ 		String.prototype.format = function(arg)
+ 		{
+ 			var args = arguments;
+ 			return this.replace( /\{(\w+)\}/g,
+ 			 function(m,k){
+ 				 return (typeof arg == 'object') ?
+ 				  a[k] : args[parseInt(k) + 0];});
+ 		}
+ 	}
+ 	var send_on_click = function ()
+ 	{
+	   var inquiry = {
+			summary:$('.summary_form').val(),
+			name:$('.name_form').val(),
+			mail:$('.mail_adress_form').val(),
+			detail:$('.detail_form').val(),
+			action:'confirmation',
+			controller: 'inquiry',
+			key: function(){return "#{0}_{1}".format(this.action, this.controller) }
+		}
+
+ 		console.table (inquiry)
+ 		console.log(inquiry.key())
+ 		$(key).submit();
+ 	}
+ </script>
