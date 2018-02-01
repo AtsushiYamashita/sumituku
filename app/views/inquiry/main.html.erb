@@ -21,7 +21,6 @@
   id="send" onclick="send_on_click()" >
 
  <script>
-
  	if (String.prototype.format == undefined)
  	{
  		String.prototype.format = function(arg)
@@ -44,9 +43,8 @@
 			controller: 'inquiry',
 			key: function(){return "#{0}_{1}".format(this.action, this.controller) }
 		}
-
- 		console.table (inquiry)
- 		console.log(inquiry.key())
- 		$(key).submit();
+		// $inquiry = inquiry;
+		// TODO 別のページに渡す方法を検討。DBに入れたくはないのでcookieとか？
+		//location.assign('http://localhost:3000/inquiry/confirmation');
  	}
  </script>
